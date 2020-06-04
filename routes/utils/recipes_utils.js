@@ -17,7 +17,7 @@ function extractRecipesIds(recipes) {
  * Get recipes list from spooncular response and extract the relevant recipe data for preview
  * @param {*} recipes_info 
  */
-function extractRelevantRecipeDetails(recipes_info) {
+function extractPreviewRecipeDetails(recipes_info) {
     return recipes_info.map((recipe_info) => {
         const {
             id,
@@ -51,7 +51,7 @@ async function getRecipeInformation(recipe_id) {
     });
 }
 
-async function getRecipesInfo(recipes_ids_list) {
+async function getRecipesPreview(recipes_ids_list) {
     let promises = [];
     recipes_ids_list.map((id) => {
         promises.push(getRecipeInformation(id));
@@ -106,8 +106,8 @@ async function getRandomThreeRecipes() {
 }
 
 exports.extractRecipesIds = extractRecipesIds;
-exports.extractRelevantRecipeDetails = extractRelevantRecipeDetails;
-exports.getRecipesInfo = getRecipesInfo;
+exports.extractPreviewRecipeDetails = extractPreviewRecipeDetails;
+exports.getRecipesPreview = getRecipesPreview;
 exports.getRandomThreeRecipes = getRandomThreeRecipes;
 
 
