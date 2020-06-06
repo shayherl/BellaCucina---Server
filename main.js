@@ -4,7 +4,7 @@ var express = require("express");
 var path = require("path");
 var logger = require("morgan");
 const session = require("client-sessions");
-const DButils = require("../assignment-3-2-roy-naor_ass3-1/routes/utils/DButils");
+const DButils = require("./routes/utils/DButils");
 
 var app = express();
 app.use(logger("dev")); //logger
@@ -50,7 +50,7 @@ app.use(function (req, res, next) {
 app.get("/alive", (req, res) => res.send("I'm alive"));
 
 // Routings
-//app.use("/user", user);
+app.use("/users", user);
 app.use("/profile", profile);
 app.use("/recipes", recipes);
 app.use(auth);

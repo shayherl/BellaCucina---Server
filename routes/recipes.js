@@ -3,6 +3,7 @@ var router = express.Router();
 const axios = require("axios");
 const search_util = require("./utils/search_utils");
 const recipes_utils = require("./utils/recipes_utils");
+const DButils = require("./utils/DButils");
 
 
 
@@ -41,6 +42,9 @@ router.get("/search/query/:searchQuery/amount/:num",  async (req, res, next) => 
   })
 });
 
+/**
+ * This path recieve a full details of a recipe by its id
+ */
 router.get("/:recipeId", async (req, res, next) => {
   try {
     const recipe = await recipes_utils.getRecipeDetails(req.params.recipeId);
