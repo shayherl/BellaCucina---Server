@@ -12,7 +12,7 @@ async function getUserInfoOnRecipes(user_id, recipes_ids) {
         }
 
         // Checks if the user saved the given recipes
-        let saved_recipe = await DButils.execQuery(`SELECT * FROM SavedRecipes WHERE user_id = '${user_id}' AND recipe_id = ${recipes_ids[i]}`);;
+        let saved_recipe = await DButils.execQuery(`SELECT * FROM FavoriteRecipes WHERE user_id = '${user_id}' AND recipe_id = ${recipes_ids[i]}`);;
         if (saved_recipe.length === 0) {
             saved_recipe = false;
         } else {

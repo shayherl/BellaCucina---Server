@@ -52,14 +52,14 @@ router.post('/watched', async (req, res) => {
 /**
  * This path returns the last 3 recipes that were seen by the logged-in user
  */
-router.get('/lastWatched', async (req, res) => {
+router.get('/lastWatched', async (req, res, next) => {
   try{
-    let result = [];
+    let recipes_ids = [];
     const user_id = req.user_id;
     const lastThreeRecipes = await user_utils.getLastThreeWatchedRecipes(user_id);
-    lastThreeRecipes.map((element) => result.push(element.recipe_id));
-    console.log(result[0]);
-    res.status(200).send(result);
+    lastThreeRecipes.map((element) => recipes_ids.push(element.recipe_id));
+    const results = await recipe_utils.getRecipesPreview(recipes_ids);
+    res.status(200).send(results);
   }catch(error){
     next(error);
   }
