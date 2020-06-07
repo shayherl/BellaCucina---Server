@@ -23,7 +23,7 @@ router.use(async function (req, res, next) {
 /**
  * This path returns user's info on recipes by their Ids (if the recipes was watched or saved by user)
  */
-router.get('/recipeInfo/:ids', async (req, res) => {
+router.get('/recipesInfo/:ids', async (req, res, next) => {
   try {
     const recipes_ids = JSON.parse(req.params.ids);
     const user_id = req.user_id;
@@ -38,7 +38,7 @@ router.get('/recipeInfo/:ids', async (req, res) => {
 /**
  * This path gets body with recipeId and mark this recipe as watched by the logged-in user
  */
-router.post('/watched', async (req, res) => {
+router.post('/watched', async (req, res, next) => {
   try{
     const recipe_id = req.body.recipeId;
     const user_id = req.user_id;

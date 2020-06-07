@@ -24,9 +24,6 @@ async function searchForRecipes(search_params) {
     const recipes_ids = recipes_utils.extractRecipesIds(search_response.data.results);
     // Do another API query for getting recipes details
     let recipes = await recipes_utils.getRecipesPreview(recipes_ids);
-    if(!recipes || !recipes.length){
-        
-    }
     return recipes;
 }
 
