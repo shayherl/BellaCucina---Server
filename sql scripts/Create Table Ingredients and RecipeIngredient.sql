@@ -34,9 +34,12 @@ create table FamilyRecipes(
     [recipe_id] int IDENTITY(1000,1) NOT NULL,
     [user_id] [UNIQUEIDENTIFIER] NOT NULL,
     [title] varchar(max) NOT NULL,
-    [Recipe_Owner] varchar(50),
+    [Author] varchar(50),
     [Recommended_Time] varchar(max),
+    [image] varchar(max),
     primary key (recipe_id),
     FOREIGN Key (user_id) REFERENCES users(user_id)
 )
+
+drop table FamilyRecipes
 
