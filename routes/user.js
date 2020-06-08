@@ -128,7 +128,9 @@ router.get('/personalRecipes/:personalRecipeID', async (req,res,next) => {
 
     const recipe_instructions = await user_utils.getRecipeInstructions(recipe_id);
     recipe_instructions.map((element) => instructions_array.push(element.description));
-    
+    if(!personal_recipes[0]){
+      res.status(404).send(`The personal recipes is not exists or doesn't belong to user`);
+    }
     personal_recipes[0].ingredients = ingredients_array;
     personal_recipes[0].instructions = instructions_array;  
 
