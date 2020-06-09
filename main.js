@@ -24,7 +24,6 @@ app.use(express.static(path.join(__dirname, "public"))); //To serve static files
 var port = process.env.PORT || "3000";
 //#endregion
 const user = require("./routes/user");
-const profile = require("./routes/profile");
 const recipes = require("./routes/recipes");
 const auth = require("./routes/auth");
 
@@ -51,7 +50,6 @@ app.get("/alive", (req, res) => res.send("I'm alive"));
 
 // Routings
 app.use("/users", user);
-app.use("/profile", profile);
 app.use("/recipes", recipes);
 app.use(auth);
 
