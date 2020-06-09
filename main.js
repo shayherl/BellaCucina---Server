@@ -4,7 +4,7 @@ var express = require("express");
 var path = require("path");
 var logger = require("morgan");
 const session = require("client-sessions");
-const DButils = require("../assignment-3-2-roy-naor_ass3-1/routes/utils/DButils");
+const DButils = require("./routes/utils/DButils");
 
 var app = express();
 app.use(logger("dev")); //logger
@@ -24,7 +24,6 @@ app.use(express.static(path.join(__dirname, "public"))); //To serve static files
 var port = process.env.PORT || "3000";
 //#endregion
 const user = require("./routes/user");
-const profile = require("./routes/profile");
 const recipes = require("./routes/recipes");
 const auth = require("./routes/auth");
 
@@ -50,8 +49,7 @@ app.use(function (req, res, next) {
 app.get("/alive", (req, res) => res.send("I'm alive"));
 
 // Routings
-//app.use("/user", user);
-app.use("/profile", profile);
+app.use("/users", user);
 app.use("/recipes", recipes);
 app.use(auth);
 
