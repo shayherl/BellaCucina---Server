@@ -21,6 +21,10 @@ app.use(
 app.use(express.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(express.static(path.join(__dirname, "public"))); //To serve static files such as images, CSS files, and JavaScript files
 
+app.use(cors());
+app.options("*", cors());
+
+
 var port = process.env.PORT || "3000";
 //#endregion
 const user = require("./routes/user");
