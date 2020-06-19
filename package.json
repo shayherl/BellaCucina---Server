@@ -2,7 +2,7 @@
   "name": "naor-roy-assignment-3.2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "node main.js"
   },
