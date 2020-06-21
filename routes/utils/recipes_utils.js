@@ -148,7 +148,7 @@ async function getRandomRecipes() {
 
 async function getRandomThreeRecipes() {
     let random_pool = await getRandomRecipes();
-    let filterd_random_pool = random_pool.data.recipes.filter((random) => (random.instructions != "") && (random.image != ""));
+    let filterd_random_pool = random_pool.data.recipes.filter((random) => (random.instructions != "") && (random.image && random.image != ""));
     if (filterd_random_pool.length < 3) {
         return getRandomThreeRecipes();
     }
