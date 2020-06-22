@@ -35,6 +35,7 @@ const corsConfig = {
 
 app.use(cors(corsConfig));
 app.options("*", cors(corsConfig));
+app.enable('trust proxy');
 
 var port = process.env.PORT || "3000";
 //#endregion
