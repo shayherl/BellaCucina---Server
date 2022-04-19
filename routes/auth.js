@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+const MySql = require("../routes/utils/MySql");
 const DButils = require("../routes/utils/DButils");
 const bcrypt = require("bcrypt");
 
@@ -17,10 +18,10 @@ router.post("/Register", async (req, res, next) => {
       email: req.body.email,
       profilePic: req.body.profilePic
     }
+    let users = [];
+    users = await DButils.execQuery("SELECT username from users");
 
-    const users = await DButils.execQuery("SELECT username FROM users");
-
-    if (users.find((x) => x.username === user_details.username))
+    if (users.find((x) => x.name === user_details.username))
       throw { status: 409, message: "Username taken" };
 
     // add the new username
@@ -29,8 +30,8 @@ router.post("/Register", async (req, res, next) => {
       parseInt(process.env.bcrypt_saltRounds)
     );
     await DButils.execQuery(
-      `INSERT INTO users VALUES (default, '${user_details.username}', '${user_details.firstname}', '${user_details.lastname}',
-      '${user_details.country}', '${hash_password}', '${user_details.email}', '${user_details.profilePic}')`
+      `INSERT INTO users VALUES ('${user_details.username}', '${user_details.firstname}', '${user_details.lastname}',
+      '${user_details.country}', '${hash_password}', '${user_details.email}')`
     );
     res.status(201).send({ message: "user created", success: true });
   } catch (error) {
@@ -58,8 +59,7 @@ router.post("/Login", async (req, res, next) => {
 
     // Set cookie
     req.session.user_id = user.user_id;
-    // req.session.save();
-    // res.cookie(session_options.cookieName, user.user_id, cookies_options);
+
 
     // return cookie
     res.status(200).send({ message: "login succeeded", success: true });
