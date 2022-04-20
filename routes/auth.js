@@ -21,7 +21,7 @@ router.post("/Register", async (req, res, next) => {
     let users = [];
     users = await DButils.execQuery("SELECT username from users");
 
-    if (users.find((x) => x.name === user_details.username))
+    if (users.find((x) => x.username === user_details.username))
       throw { status: 409, message: "Username taken" };
 
     // add the new username

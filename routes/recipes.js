@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-const search_util = require("./utils/search_utils");
 const recipes_utils = require("./utils/recipes_utils");
 
 router.get("/", (req, res) => res.send("im here"));

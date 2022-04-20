@@ -25,7 +25,7 @@ app.use(
 app.use(express.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(express.static(path.join(__dirname, "public"))); //To serve static files such as images, CSS files, and JavaScript files
 app.use(express.static(path.join(__dirname, "dist")));
-
+// app.use(express.static(path.join(__dirname, '../assignment-3-3-basic/dist')));
 app.get("/",function(req,res)
 {   res.sendFile(__dirname+"/index.html");
 });
@@ -41,7 +41,7 @@ const corsConfig = {
 app.use(cors(corsConfig));
 app.options("*", cors(corsConfig));
 
-var port = process.env.PORT || "3000";
+var port = process.env.PORT || "80";
 //#endregion
 const user = require("./routes/user");
 const recipes = require("./routes/recipes");
@@ -77,6 +77,9 @@ app.use(auth);
 app.use(function (err, req, res, next) {
   console.error(err);
   res.status(err.status || 500).send({ message: err.message, success: false });
+});
+app.get('/', (req,res) => {
+  res.sendFile(path.join(__dirname, '../assignment-3-3-basic/dist/index.html'));
 });
 
 const server = app.listen(port, () => {
