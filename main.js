@@ -24,10 +24,14 @@ app.use(
 );
 app.use(express.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(express.static(path.join(__dirname, "public"))); //To serve static files such as images, CSS files, and JavaScript files
-app.use(express.static(path.join(__dirname, "dist")));
-// app.use(express.static(path.join(__dirname, '../assignment-3-3-basic/dist')));
+// app.use(express.static(path.join(__dirname, "dist")));
+
+app.use(express.static(path.join(__dirname, '../assignment-3-3-basic/dist')));
 app.get("/",function(req,res)
-{   res.sendFile(__dirname+"/index.html");
+{   
+  res.sendFile(path.join(__dirname, '../assignment-3-3-basic/dist/index.html'));
+  // res.sendFile(__dirname+"/index.html");
+
 });
 
 // app.use(cors());
@@ -78,9 +82,11 @@ app.use(function (err, req, res, next) {
   console.error(err);
   res.status(err.status || 500).send({ message: err.message, success: false });
 });
-app.get('/', (req,res) => {
-  res.sendFile(path.join(__dirname, '../assignment-3-3-basic/dist/index.html'));
-});
+
+// run front 
+// app.get('/', (req,res) => {
+//   res.sendFile(path.join(__dirname, '../assignment-3-3-basic/dist/index.html'));
+// });
 
 const server = app.listen(port, () => {
   console.log(`Server listen on port ${port}`);
