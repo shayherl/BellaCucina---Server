@@ -4,7 +4,7 @@ info:
   description: API for recipes project
   version: 1.0.1
 servers:
-- url: "http://132.73.84.100"
+- url: "http://132.72.65.211"
   description: SwaggerHub API Auto Mocking hey
 tags:
 - name: Auth
