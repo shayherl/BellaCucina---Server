@@ -25,13 +25,16 @@ app.use(
 );
 app.use(express.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(express.static(path.join(__dirname, "public"))); //To serve static files such as images, CSS files, and JavaScript files
-// app.use(express.static(path.join(__dirname, "dist")));
-
-app.use(express.static(path.join(__dirname, '../assignment-3-3-basic/dist')));
+//local:
+app.use(express.static(path.join(__dirname, "dist")));
+//remote:
+// app.use(express.static(path.join(__dirname, '../assignment-3-3-basic/dist')));
 app.get("/",function(req,res)
-{   
-  res.sendFile(path.join(__dirname, '../assignment-3-3-basic/dist/index.html'));
-  // res.sendFile(__dirname+"/index.html");
+{ 
+  //remote: 
+  // res.sendFile(path.join(__dirname, '../assignment-3-3-basic/dist/index.html'));
+  //local:
+  res.sendFile(__dirname+"/index.html");
 
 });
 
@@ -46,7 +49,7 @@ const corsConfig = {
 app.use(cors(corsConfig));
 app.options("*", cors(corsConfig));
 
-var port = process.env.PORT || "80";
+var port = process.env.PORT || "80"; //local=3000 remote=80
 //#endregion
 const user = require("./routes/user");
 const recipes = require("./routes/recipes");
@@ -84,10 +87,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).send({ message: err.message, success: false });
 });
 
-// run front 
-// app.get('/', (req,res) => {
-//   res.sendFile(path.join(__dirname, '../assignment-3-3-basic/dist/index.html'));
-// });
+
 
 const server = app.listen(port, () => {
   console.log(`Server listen on port ${port}`);
