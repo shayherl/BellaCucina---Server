@@ -37,6 +37,21 @@ async function getRecipeDetails(recipe_id) {
     }
 }
 
+async function searchRecipe(recipeName, cuisine, diet, intolerance, number, username) {
+    const response = await axios.get(`${api_domain}/complexSearch`, {
+        params: {
+            query: recipeName,
+            cuisine: cuisine,
+            diet: diet,
+            intolerances: intolerance,
+            number: number,
+            apiKey: process.env.spooncular_apiKey
+        }
+    });
+
+    return getRecipesPreview(response.data.results.map((element) => element.id), username);
+}
+
 
 
 exports.getRecipeDetails = getRecipeDetails;
