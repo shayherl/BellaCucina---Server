@@ -74,15 +74,15 @@ router.post('/MyRecipes', async (req, res, next) => {
     let newRecipe ={
       user_id: user_id,
       title: req.body.title,
-      imageURL: req.body.imageURL,
+      image: req.body.image,
       readyInMinutes: req.body.readyInMinutes,
-      popularity: req.body.popularity,
+      aggregateLikes: req.body.aggregateLikes,
       vegetarian: req.body.vegetarian,
       vegan: req.body.vegan,
       glutenFree: req.body.glutenFree,
       summary: req.body.summary,
       instructions: req.body.instructions,
-      ingredients: req.body.ingredients,
+      extendedIngredients: req.body.extendedIngredients,
       servings: req.body.servings
     }
     await user_utils.createRecipe(newRecipe);

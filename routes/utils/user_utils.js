@@ -13,9 +13,9 @@ async function getFavoriteRecipes(user_id){
 async function createRecipe(recipeData){
       const recipeId = Date.now();
       const query = `INSERT INTO recipes (id, user_id, title, imageURL, readyInMinutes, popularity, vegetarian, vegan, glutenFree, summary, instructions, ingredients, servings)
-        VALUES ('${recipeId}', '${recipeData.user_id}', '${recipeData.title}','${recipeData.imageURL}', '${recipeData.readyInMinutes}', '${recipeData.popularity}', 
+        VALUES ('${recipeId}', '${recipeData.user_id}', '${recipeData.title}','${recipeData.image}', '${recipeData.readyInMinutes}', '${recipeData.aggregateLikes}', 
                 '${recipeData.vegetarian}', '${recipeData.vegan}', '${recipeData.glutenFree}', '${recipeData.summary}', 
-                '${recipeData.instructions}', '${recipeData.ingredients}', '${recipeData.servings}')`;
+                '${recipeData.instructions}', '${recipeData.extendedIngredients}', '${recipeData.servings}')`;
       await DButils.execQuery(query);
 }
 
