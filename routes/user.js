@@ -92,7 +92,7 @@ router.post('/MyRecipes', async (req, res, next) => {
   }
 });
 
-router.get('/MyRecipes', async (req, res, next) => {
+router.get('/AllMyRecipes', async (req, res, next) => {
   try {
     const user_id = req.session.user_id;
     if (!user_id) {
@@ -105,4 +105,17 @@ router.get('/MyRecipes', async (req, res, next) => {
   }
 });
 
+router.get('/MyRecipes/:title', async (req, res, next) => {
+  try {
+    const user_id = req.session.user_id;
+
+    if (!user_id) {
+      throw { status: 401, message: "Unauthorized" };
+    }
+    const userRecipes = await user_utils.getRecipeByTitle(user_id, req.params.title);
+    res.status(200).send(userRecipes);
+  } catch (error) {
+    next(error);
+  }
+});
 module.exports = router;
