@@ -64,6 +64,21 @@ router.get('/favorites', async (req,res,next) => {
     next(error); 
   }
 });
+router.get('/favoritesID', async (req,res,next) => {
+  try{
+    const user_id = req.session.user_id;
+    if (!user_id) {
+      throw { status: 401, message: "Unauthorized" };
+    }
+    let favorite_recipes = {};
+    const recipes_id = await user_utils.getFavoriteRecipes(user_id);
+    let recipes_id_array = [];
+    recipes_id.map((element) => recipes_id_array.push(element.recipe_id)); //extracting the recipe ids into array
+    res.status(200).send(recipes_id_array);
+  } catch(error){
+    next(error); 
+  }
+});
 
 router.post('/MyRecipes', async (req, res, next) => {
   try {

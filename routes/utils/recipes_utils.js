@@ -18,8 +18,8 @@ async function getRecipeInformation(recipe_id) {
             // apiKey: "24597e85305b48a99da7f38474bcfcdf"
             // apiKey: "ed445cb06c584b2cbb964732192606c3"
             // apiKey: "e41e51fcca0a444085fc208cfc0eac5f"
-            apiKey: "0d1ec35cab9a4ae885bd604ff14cfd6e"
-            // apiKey: "d7763961a846470495b68300599c229e"
+            // apiKey: "0d1ec35cab9a4ae885bd604ff14cfd6e"
+            apiKey: "d7763961a846470495b68300599c229e"
 
 
         }
@@ -36,8 +36,8 @@ async function getRandomRecipes() {
             // apiKey: "24597e85305b48a99da7f38474bcfcdf"
             // apiKey: "ed445cb06c584b2cbb964732192606c3"
             // apiKey: "e41e51fcca0a444085fc208cfc0eac5f"
-            apiKey: "0d1ec35cab9a4ae885bd604ff14cfd6e"
-            // apiKey: "d7763961a846470495b68300599c229e"
+            // apiKey: "0d1ec35cab9a4ae885bd604ff14cfd6e"
+            apiKey: "d7763961a846470495b68300599c229e"
 
 
         }
@@ -98,8 +98,8 @@ async function searchRecipe(recipeName, cuisine, diet, intolerance, number, sort
             // apiKey: "24597e85305b48a99da7f38474bcfcdf"
             // apiKey: "ed445cb06c584b2cbb964732192606c3"
             // apiKey: "e41e51fcca0a444085fc208cfc0eac5f"
-            apiKey: "0d1ec35cab9a4ae885bd604ff14cfd6e"
-            // apiKey: "d7763961a846470495b68300599c229e"
+            // apiKey: "0d1ec35cab9a4ae885bd604ff14cfd6e"
+            apiKey: "d7763961a846470495b68300599c229e"
         }
     });
 
